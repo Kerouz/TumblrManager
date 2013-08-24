@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TMBaccount.h"
 
-@interface TMBAccountController : UIViewController
+@interface TMBAccountController : UIViewController {
+    
+    TMBAccount *currentAccount;
+    NSIndexPath *index;
+    
+    IBOutlet UITextView *followedBlog;
+}
+
+- (id)initWithIndexPath: (NSIndexPath *)indexPath;
 
 @end

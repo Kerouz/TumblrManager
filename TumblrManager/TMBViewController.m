@@ -56,6 +56,9 @@
 #pragma mark UITableDelegate Methods
 
 - (void)tableView:(UITableView *)tv didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    TMBAppDelegate *delegate = (TMBAppDelegate *) [[UIApplication sharedApplication] delegate];
+    TMBAccountController *accountList = [[TMBAccountController alloc] initWithIndexPath:indexPath];
+    [delegate.navController pushViewController:accountList animated:YES];
     [tv deselectRowAtIndexPath:indexPath animated:YES];
 }
 
