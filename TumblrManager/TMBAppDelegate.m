@@ -7,17 +7,42 @@
 //
 
 #import "TMBAppDelegate.h"
-
 #import "TMBViewController.h"
+#import "TMBAccount.h"
+
 
 @implementation TMBAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+    // Setting up two accounts at the moment, to be replaced with real ones later
+    
+    TMBAccount *account1 = [[TMBAccount alloc] init];
+    account1.accountName = @"Followed 1";
+    [account1.accountBlogs addObject:@"Blog 1"];
+    [account1.accountBlogs addObject:@"Blog 2"];
+
+    TMBAccount *account2 = [[TMBAccount alloc] init];
+    account2.accountName = @"Followed 2";
+    [account2.accountBlogs addObject:@"Blog A"];
+    [account2.accountBlogs addObject:@"Blog B"];
+    [account2.accountBlogs addObject:@"Blog C"];
+
+    /*
+    See if I can get this working:
+    TMBAccount *account3 = [[TMBAccount alloc] initWithAccounts];
+     
+    // Add an init method that has already added blogs     
+     
+    */
+    
+    // Remember: Need to set up the inital accounts array
+    self.accounts = [[NSMutableArray alloc] initWithObjects: account1, account2, nil];
+    
     self.viewController = [[TMBViewController alloc] initWithNibName:@"TMBViewController" bundle:nil];
-    self.window.rootViewController = self.viewController;
+    self.navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
+    self.window.rootViewController = self.navController;
     [self.window makeKeyAndVisible];
     return YES;
 }

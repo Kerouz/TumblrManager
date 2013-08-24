@@ -18,6 +18,9 @@
 		E91E925517C839C100EA6B84 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E91E925417C839C100EA6B84 /* Default-568h@2x.png */; };
 		E91E925817C839C100EA6B84 /* TMBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E91E925717C839C100EA6B84 /* TMBViewController.m */; };
 		E91E925B17C839C100EA6B84 /* TMBViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E91E925917C839C100EA6B84 /* TMBViewController.xib */; };
+		E91E926317C8448600EA6B84 /* TMBAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = E91E926217C8448600EA6B84 /* TMBAccount.m */; };
+		E91E926717C8529800EA6B84 /* TMBAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = E91E926517C8529800EA6B84 /* TMBAccountController.m */; };
+		E91E926817C8529800EA6B84 /* TMBAccountController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E91E926617C8529800EA6B84 /* TMBAccountController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,11 @@
 		E91E925617C839C100EA6B84 /* TMBViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMBViewController.h; sourceTree = "<group>"; };
 		E91E925717C839C100EA6B84 /* TMBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMBViewController.m; sourceTree = "<group>"; };
 		E91E925A17C839C100EA6B84 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TMBViewController.xib; sourceTree = "<group>"; };
+		E91E926117C8448600EA6B84 /* TMBAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBAccount.h; sourceTree = "<group>"; };
+		E91E926217C8448600EA6B84 /* TMBAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMBAccount.m; sourceTree = "<group>"; };
+		E91E926417C8529800EA6B84 /* TMBAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBAccountController.h; sourceTree = "<group>"; };
+		E91E926517C8529800EA6B84 /* TMBAccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMBAccountController.m; sourceTree = "<group>"; };
+		E91E926617C8529800EA6B84 /* TMBAccountController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMBAccountController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +96,11 @@
 				E91E925617C839C100EA6B84 /* TMBViewController.h */,
 				E91E925717C839C100EA6B84 /* TMBViewController.m */,
 				E91E925917C839C100EA6B84 /* TMBViewController.xib */,
+				E91E926417C8529800EA6B84 /* TMBAccountController.h */,
+				E91E926517C8529800EA6B84 /* TMBAccountController.m */,
+				E91E926617C8529800EA6B84 /* TMBAccountController.xib */,
+				E91E926117C8448600EA6B84 /* TMBAccount.h */,
+				E91E926217C8448600EA6B84 /* TMBAccount.m */,
 				E91E924517C839C100EA6B84 /* Supporting Files */,
 			);
 			path = TumblrManager;
@@ -164,6 +177,7 @@
 				E91E925317C839C100EA6B84 /* Default@2x.png in Resources */,
 				E91E925517C839C100EA6B84 /* Default-568h@2x.png in Resources */,
 				E91E925B17C839C100EA6B84 /* TMBViewController.xib in Resources */,
+				E91E926817C8529800EA6B84 /* TMBAccountController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +191,8 @@
 				E91E924B17C839C100EA6B84 /* main.m in Sources */,
 				E91E924F17C839C100EA6B84 /* TMBAppDelegate.m in Sources */,
 				E91E925817C839C100EA6B84 /* TMBViewController.m in Sources */,
+				E91E926317C8448600EA6B84 /* TMBAccount.m in Sources */,
+				E91E926717C8529800EA6B84 /* TMBAccountController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

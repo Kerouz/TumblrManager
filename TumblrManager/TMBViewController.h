@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TMBViewController : UIViewController
+@interface TMBViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+    NSMutableArray *accounts;
+}
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 
 @end
