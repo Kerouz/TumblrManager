@@ -18,6 +18,7 @@
         _blogAvatar = [UIImage imageNamed:@"QuestionMark.png"];
         _blogDescription = @"Blog description goes here";
         _blogUpdated = [NSDate date];
+        NSLog(@"Date Created: %@", _blogUpdated);
 //        _blogPosts = 5;
     }
     return self;

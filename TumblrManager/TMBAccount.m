@@ -23,12 +23,13 @@
 {
     if ((self = [super init])) {
         _accountName = passedAccountName;
-        _accountBlogs = [NSArray arrayWithObjects: nil];
+        _accountBlogs = [NSMutableArray arrayWithObjects: nil];
         
-        int randomTestNumber = (arc4random() % 5) + 1;
+//        int randomTestNumber = (arc4random() % 5) + 1;
+        int randomTestNumber = 3;
         
         for (int i=0; i< randomTestNumber; i++) {
-            TMBBlog *tempBlog = [[TMBBlog alloc] init];
+            TMBBlog *tempBlog = [[TMBBlog alloc] initWithDetails];
             [_accountBlogs addObject:tempBlog];
         }
     }

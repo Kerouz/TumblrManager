@@ -20,17 +20,20 @@
     // Remember: Need to set up the inital accounts array
     self.accounts = [[NSMutableArray alloc] initWithObjects: nil];
     
-    TMBAccount *account1 = [[TMBAccount alloc] init];
-    account1.accountName = @"Followed 1";
-    [account1.accountBlogs addObject:@"Blog 1"];
-    [account1.accountBlogs addObject:@"Blog 2"];
-
-    TMBAccount *account2 = [[TMBAccount alloc] init];
-    account2.accountName = @"Followed 2";
-    [account2.accountBlogs addObject:@"Blog A"];
-    [account2.accountBlogs addObject:@"Blog B"];
-    [account2.accountBlogs addObject:@"Blog C"];
+//    TMBAccount *account1 = [[TMBAccount alloc] init];
+//    account1.accountName = @"Followed 1";
+//    [account1.accountBlogs addObject:@"Blog 1"];
+//    [account1.accountBlogs addObject:@"Blog 2"];
+//
+//    TMBAccount *account2 = [[TMBAccount alloc] init];
+//    account2.accountName = @"Followed 2";
+//    [account2.accountBlogs addObject:@"Blog A"];
+//    [account2.accountBlogs addObject:@"Blog B"];
+//    [account2.accountBlogs addObject:@"Blog C"];
     
+    
+    TMBAccount *account1 = [[TMBAccount alloc] initWithDetails:@"Followed 1"];
+    TMBAccount *account2 = [[TMBAccount alloc] initWithDetails:@"Followed 2"];
     TMBAccount *account3 = [[TMBAccount alloc] initWithDetails:@"Followed 3"];
     TMBAccount *account4 = [[TMBAccount alloc] initWithDetails:@"Followed 4"];
     

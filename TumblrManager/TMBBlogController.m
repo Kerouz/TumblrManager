@@ -38,16 +38,18 @@
     
     TMBAppDelegate *delegate = (TMBAppDelegate *)[[UIApplication sharedApplication] delegate];
     TMBAccount *currentAccount = [delegate.accounts objectAtIndex:index.row];
-    
-    NSLog(@"%@", index);
-    
+        
     currentBlog = [currentAccount.accountBlogs objectAtIndex:index.row];
     
-    self.title = currentBlog;
-    
-    
-    _blogOwnerName.text = currentBlog;
+    self.title = currentBlog.blogTitle;
+
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    _blogOwnerName.text = currentBlog.blogTitle;
     _blogOwnerName.editable = NO;
+    _blogUpdateLabel.text = [dateFormatter stringFromDate:currentBlog.blogUpdated];
+    _blogAvatarImage.image = currentBlog.blogAvatar;
+    _blogDescriptionText.text = currentBlog.blogDescription;
+    _blogDescriptionText.editable = NO;
     
 
 }

@@ -10,6 +10,7 @@
 #import "TMBBlogController.h"
 #import "TMBAppDelegate.h"
 #import "TMBAccount.h"
+#import "TMBBlog.h"
 
 @interface TMBAccountController ()
 
@@ -57,14 +58,14 @@
 #pragma mark -
 #pragma mark UITableViewDataSource Methods
 
-- (UITableViewCell *) tableView: (UITableView *)tv cellForRowAtIndexPath: (NSIndexPath *)indexpath {
+- (UITableViewCell *) tableView: (UITableView *)tv cellForRowAtIndexPath: (NSIndexPath *)indexPath {
     UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:@"cell"];
     
     if (nil == cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    NSString *listFollowedBlog = [currentAccount.accountBlogs objectAtIndex:indexpath.row];
-    cell.textLabel.text = listFollowedBlog;
+    TMBBlog *listFollowedBlog = [currentAccount.accountBlogs objectAtIndex:indexPath.row];
+    cell.textLabel.text = listFollowedBlog.blogTitle;
     return cell;
 }
 

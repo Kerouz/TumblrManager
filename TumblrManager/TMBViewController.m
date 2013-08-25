@@ -38,15 +38,15 @@
 #pragma mark UITableViewDataSource Methods
 
 
-- (UITableViewCell *) tableView: (UITableView *)tv cellForRowAtIndexPath: (NSIndexPath *)indexpath {
+- (UITableViewCell *) tableView: (UITableView *)tv cellForRowAtIndexPath: (NSIndexPath *)indexPath {
     UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:@"cell"];
     
     if (nil == cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     
-    if (indexpath.row < accounts.count) {
-    TMBAccount *thisAccount = [accounts objectAtIndex:indexpath.row];
+    if (indexPath.row < accounts.count) {
+    TMBAccount *thisAccount = [accounts objectAtIndex:indexPath.row];
     cell.textLabel.text = thisAccount.accountName;
     } else {
         cell.textLabel.text = @"Add a tumblr account";
