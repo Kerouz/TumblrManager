@@ -16,7 +16,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Setting up two accounts at the moment, to be replaced with real ones later
+    
+    // Remember: Need to set up the inital accounts array
+    self.accounts = [[NSMutableArray alloc] initWithObjects: nil];
     
     TMBAccount *account1 = [[TMBAccount alloc] init];
     account1.accountName = @"Followed 1";
@@ -29,14 +31,13 @@
     [account2.accountBlogs addObject:@"Blog B"];
     [account2.accountBlogs addObject:@"Blog C"];
     
-    TMBAccount *account3 = [[TMBAccount alloc] initWithAccounts];
-    account3.accountName = @"Followed 3";
-    
+    TMBAccount *account3 = [[TMBAccount alloc] initWithDetails:@"Followed 3"];
     TMBAccount *account4 = [[TMBAccount alloc] initWithDetails:@"Followed 4"];
     
-    
-    // Remember: Need to set up the inital accounts array
-    self.accounts = [[NSMutableArray alloc] initWithObjects: account1, account2, account3, account4, nil];
+    [self.accounts addObject:account1];
+    [self.accounts addObject:account2];
+    [self.accounts addObject:account3];
+    [self.accounts addObject:account4];
     
     self.viewController = [[TMBViewController alloc] initWithNibName:@"TMBViewController" bundle:nil];
     self.navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];

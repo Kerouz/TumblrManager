@@ -7,6 +7,7 @@
 //
 
 #import "TMBAccount.h"
+#import "TMBBlog.h"
 
 @implementation TMBAccount
 
@@ -22,7 +23,14 @@
 {
     if ((self = [super init])) {
         _accountName = passedAccountName;
-        _accountBlogs = [NSArray arrayWithObjects: @"Square", @"Tri", @"Cross", @"Circle", nil];
+        _accountBlogs = [NSArray arrayWithObjects: nil];
+        
+        int randomTestNumber = (arc4random() % 5) + 1;
+        
+        for (int i=0; i< randomTestNumber; i++) {
+            TMBBlog *tempBlog = [[TMBBlog alloc] init];
+            [_accountBlogs addObject:tempBlog];
+        }
     }
     return self;
 }

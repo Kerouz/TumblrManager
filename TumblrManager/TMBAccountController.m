@@ -7,6 +7,7 @@
 //
 
 #import "TMBAccountController.h"
+#import "TMBBlogController.h"
 #import "TMBAppDelegate.h"
 #import "TMBAccount.h"
 
@@ -78,8 +79,8 @@
 
 - (void)tableView:(UITableView *)tv didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     TMBAppDelegate *delegate = (TMBAppDelegate *) [[UIApplication sharedApplication] delegate];
-    TMBAccountController *accountList = [[TMBAccountController alloc] initWithIndexPath:indexPath];
-    [delegate.navController pushViewController:accountList animated:YES];
+    TMBBlogController *selectedBlog = [[TMBBlogController alloc] initWithIndexPath:indexPath];
+    [delegate.navController pushViewController:selectedBlog animated:YES];
     [tv deselectRowAtIndexPath:indexPath animated:YES];
 }
 
