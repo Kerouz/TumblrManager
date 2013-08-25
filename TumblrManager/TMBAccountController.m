@@ -36,13 +36,15 @@
 {
     [super viewDidLoad];
     TMBAppDelegate *delegate = (TMBAppDelegate *)[[UIApplication sharedApplication] delegate];
-    TMBAccount *thisAccount = [delegate.accounts objectAtIndex:index.row ];
-    self.title = thisAccount.accountName;
     
-    followedBlog.text = thisAccount.accountName;
+    currentAccount = [delegate.accounts objectAtIndex:index.row ];
+    self.title = currentAccount.accountName;
+    
+        
     // Checking that the currently selected account is correct!!
-    //    NSLog(@"current account name %@", thisAccount.accountName);
-    followedBlog.editable = NO;
+//    NSLog(@"current account name %@", currentAccount.accountName);
+//    NSLog(@"First followed blog: %@", [currentAccount.accountBlogs  objectAtIndex:0]);
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,7 +53,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark Delegate Methods
+#pragma mark -
+#pragma mark UITableViewDataSource Methods
 
 - (UITableViewCell *) tableView: (UITableView *)tv cellForRowAtIndexPath: (NSIndexPath *)indexpath {
     UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:@"cell"];
@@ -59,10 +62,25 @@
     if (nil == cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    currentAccount = [accounts objectAtIndex:indexpath.row];
-    cell.textLabel.text = thisAccount.accountName;
-    NSLog(@"%@", thisAccount.accountName);
+    NSString *listFollowedBlog = [currentAccount.accountBlogs objectAtIndex:indexpath.row];
+    cell.textLabel.text = listFollowedBlog;
     return cell;
+}
+
+
+
+- (NSInteger *) tableView: (UITableView *)tv numberOfRowsInSection:(NSInteger)section {
+    return [currentAccount.accountBlogs count];
+}
+
+#pragma mark -
+#pragma mark UITableDelegate Methods
+
+- (void)tableView:(UITableView *)tv didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    TMBAppDelegate *delegate = (TMBAppDelegate *) [[UIApplication sharedApplication] delegate];
+    TMBAccountController *accountList = [[TMBAccountController alloc] initWithIndexPath:indexPath];
+    [delegate.navController pushViewController:accountList animated:YES];
+    [tv deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 

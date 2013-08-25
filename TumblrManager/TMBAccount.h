@@ -17,4 +17,7 @@
 @property (nonatomic, strong) UIImage *accountImage;
 @property (nonatomic, strong) NSMutableArray *accountBlogs;
 
+-(id) initWithAccounts;
+-(id) initWithDetails: (NSString *)passedAccountName;
+
 @end

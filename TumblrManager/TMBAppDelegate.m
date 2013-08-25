@@ -28,17 +28,15 @@
     [account2.accountBlogs addObject:@"Blog A"];
     [account2.accountBlogs addObject:@"Blog B"];
     [account2.accountBlogs addObject:@"Blog C"];
-
-    /*
-    See if I can get this working:
+    
     TMBAccount *account3 = [[TMBAccount alloc] initWithAccounts];
-     
-    // Add an init method that has already added blogs     
-     
-    */
+    account3.accountName = @"Followed 3";
+    
+    TMBAccount *account4 = [[TMBAccount alloc] initWithDetails:@"Followed 4"];
+    
     
     // Remember: Need to set up the inital accounts array
-    self.accounts = [[NSMutableArray alloc] initWithObjects: account1, account2, nil];
+    self.accounts = [[NSMutableArray alloc] initWithObjects: account1, account2, account3, account4, nil];
     
     self.viewController = [[TMBViewController alloc] initWithNibName:@"TMBViewController" bundle:nil];
     self.navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];

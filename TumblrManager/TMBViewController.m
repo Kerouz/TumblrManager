@@ -23,7 +23,7 @@
     self.title = @"Tumblr Accounts";
     TMBAppDelegate *delegate = (TMBAppDelegate *)[[UIApplication sharedApplication]delegate];
     accounts = delegate.accounts;
-    NSLog(@"Number of accounts, %lu", (unsigned long)[accounts count]);
+    // NSLog(@"Number of accounts, %lu", (unsigned long)[accounts count]);
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,7 +44,8 @@
     }
     TMBAccount *thisAccount = [accounts objectAtIndex:indexpath.row];
     cell.textLabel.text = thisAccount.accountName;
-    NSLog(@"%@", thisAccount.accountName);
+//    NSLog(@"%@", thisAccount.accountName);
+//    NSLog(@"second blog followed: %@", [thisAccount.accountBlogs objectAtIndex:1] );
     return cell;
 }
 
