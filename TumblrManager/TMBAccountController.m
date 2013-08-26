@@ -70,15 +70,14 @@
 }
 
 
-
-- (NSInteger *) tableView: (UITableView *)tv numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [currentAccount.accountBlogs count];
 }
 
 #pragma mark -
 #pragma mark UITableDelegate Methods
 
-- (void)tableView:(UITableView *)tv didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     TMBAppDelegate *delegate = (TMBAppDelegate *) [[UIApplication sharedApplication] delegate];
     TMBBlogController *selectedBlog = [[TMBBlogController alloc] initWithIndexPath:indexPath];
     [delegate.navController pushViewController:selectedBlog animated:YES];

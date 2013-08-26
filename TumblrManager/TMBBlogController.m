@@ -44,8 +44,10 @@
     self.title = currentBlog.blogTitle;
 
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"YYYY-MM-dd";
     _blogOwnerName.text = currentBlog.blogTitle;
     _blogOwnerName.editable = NO;
+    NSLog(@"%@", currentBlog.blogUpdated);
     _blogUpdateLabel.text = [dateFormatter stringFromDate:currentBlog.blogUpdated];
     _blogAvatarImage.image = currentBlog.blogAvatar;
     _blogDescriptionText.text = currentBlog.blogDescription;

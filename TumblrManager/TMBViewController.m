@@ -59,7 +59,7 @@
     return cell;
 }
 
-- (NSInteger *) tableView: (UITableView *)tv numberOfRowsInSection:(NSInteger)section {
+- (NSInteger) tableView: (UITableView *)tv numberOfRowsInSection:(NSInteger)section {
     NSInteger count = accounts.count;
     if (self.editing) {
         count = count +1;
@@ -107,7 +107,7 @@
 #pragma mark -
 #pragma mark UITableDelegate Methods
 
-- (void)tableView:(UITableView *)tv didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     TMBAppDelegate *delegate = (TMBAppDelegate *) [[UIApplication sharedApplication] delegate];
     
     if (indexPath.row < accounts.count && !self.editing) {
@@ -118,7 +118,7 @@
         TMBAddAccountController *addAccount = [[TMBAddAccountController alloc] init];        
         [delegate.navController pushViewController:addAccount animated:YES];
     }
-    [tv deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tv editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {

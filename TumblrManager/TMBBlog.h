@@ -16,7 +16,7 @@
 @property (nonatomic, weak) NSString *blogTitle;
 @property (nonatomic, weak) UIImage *blogAvatar;
 @property (nonatomic, weak) NSString *blogDescription;
-@property (nonatomic, weak) NSDate *blogUpdated;
+@property (nonatomic, strong) NSDate *blogUpdated;
 
 //@property (nonatomic, weak) NSNumber *blogPosts;
 
