@@ -20,23 +20,6 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>&lt;key&gt;CFBundleURLTypes&lt;/key&gt;
-&lt;array&gt;
-  &lt;dict&gt;
-    &lt;key&gt;CFBundleURLSchemes&lt;/key&gt;
-    &lt;array&gt;
-      &lt;string&gt;myapp&lt;/string&gt;
-    &lt;/array&gt;
-  &lt;/dict&gt;
-&lt;/array&gt;</string>
-			</array>
-		</dict>
-	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
