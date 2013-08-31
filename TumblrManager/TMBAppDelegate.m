@@ -9,6 +9,7 @@
 #import "TMBAppDelegate.h"
 #import "TMBViewController.h"
 #import "TMBAccount.h"
+#import "TMAPIClient.h"
 
 
 @implementation TMBAppDelegate
@@ -19,18 +20,9 @@
     
     // Remember: Need to set up the inital accounts array
     self.accounts = [[NSMutableArray alloc] initWithObjects: nil];
-    
-//    TMBAccount *account1 = [[TMBAccount alloc] init];
-//    account1.accountName = @"Followed 1";
-//    [account1.accountBlogs addObject:@"Blog 1"];
-//    [account1.accountBlogs addObject:@"Blog 2"];
-//
-//    TMBAccount *account2 = [[TMBAccount alloc] init];
-//    account2.accountName = @"Followed 2";
-//    [account2.accountBlogs addObject:@"Blog A"];
-//    [account2.accountBlogs addObject:@"Blog B"];
-//    [account2.accountBlogs addObject:@"Blog C"];
-    
+    [TMAPIClient sharedInstance].OAuthConsumerKey = @"1kNHEcklCA6h5i7xG4HDsJA4QVcYN9tNsUgmxCqzX2bxsK7VjX";
+    [TMAPIClient sharedInstance].OAuthConsumerSecret = @"iEmPlb6hUpcAaBCtJBajPHhZg2KgWoB5Ttq8LbNPZ3VUp3PzIP";
+//        
     
     TMBAccount *account1 = [[TMBAccount alloc] initWithDetails:@"Followed 1"];
     TMBAccount *account2 = [[TMBAccount alloc] initWithDetails:@"Followed 2"];
@@ -42,11 +34,31 @@
     [self.accounts addObject:account3];
     [self.accounts addObject:account4];
     
+    
+    // `void` methods for immediate requests, preferable when the caller does not need a reference to an actual request object:
+    
+    [[TMAPIClient sharedInstance] userInfo:^(id result, NSError *error) {
+        if (!error)
+            NSLog(@"Got some user info");
+    }];
+    
+    
+    [[TMAPIClient sharedInstance] followers:@"fairlyhuman.tumblr.com"
+                                 parameters:nil
+                                   callback:^ (id result, NSError *error) {
+                                   }];
+    
+    
     self.viewController = [[TMBViewController alloc] initWithNibName:@"TMBViewController" bundle:nil];
     self.navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
     self.window.rootViewController = self.navController;
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    return [[TMAPIClient sharedInstance] handleOpenURL:url];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
