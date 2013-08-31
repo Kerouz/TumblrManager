@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A95DEF5D5224F1698286DBD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E16C26D1C56D47968DDF3AA4 /* libPods.a */; };
 		E91E923F17C839C100EA6B84 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E91E923E17C839C100EA6B84 /* UIKit.framework */; };
 		E91E924117C839C100EA6B84 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E91E924017C839C100EA6B84 /* Foundation.framework */; };
 		E91E924317C839C100EA6B84 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E91E924217C839C100EA6B84 /* CoreGraphics.framework */; };
@@ -25,11 +26,15 @@
 		E91E926D17C9979700EA6B84 /* TMBBlogController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E91E926B17C9979700EA6B84 /* TMBBlogController.xib */; };
 		E91E927117C9BFDA00EA6B84 /* TMBAddAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = E91E926F17C9BFDA00EA6B84 /* TMBAddAccountController.m */; };
 		E91E927217C9BFDA00EA6B84 /* TMBAddAccountController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E91E927017C9BFDA00EA6B84 /* TMBAddAccountController.xib */; };
+		E951EC3117D1AFE400285052 /* TwitterAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E951EC2F17D1AFE400285052 /* TwitterAppViewController.m */; };
+		E951EC3217D1AFE400285052 /* TwitterAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E951EC3017D1AFE400285052 /* TwitterAppViewController.xib */; };
 		E99FA49017CA1BCE00C98FED /* TMBBlog.m in Sources */ = {isa = PBXBuildFile; fileRef = E99FA48F17CA1BCD00C98FED /* TMBBlog.m */; };
 		E99FA49217CA228800C98FED /* QuestionMark.png in Resources */ = {isa = PBXBuildFile; fileRef = E99FA49117CA228800C98FED /* QuestionMark.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C96BE817844D487BBA3C46B9 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		E16C26D1C56D47968DDF3AA4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E91E923B17C839C100EA6B84 /* TumblrManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TumblrManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E91E923E17C839C100EA6B84 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E91E924017C839C100EA6B84 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -57,6 +62,9 @@
 		E91E926E17C9BFDA00EA6B84 /* TMBAddAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBAddAccountController.h; sourceTree = "<group>"; };
 		E91E926F17C9BFDA00EA6B84 /* TMBAddAccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMBAddAccountController.m; sourceTree = "<group>"; };
 		E91E927017C9BFDA00EA6B84 /* TMBAddAccountController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMBAddAccountController.xib; sourceTree = "<group>"; };
+		E951EC2E17D1AFE400285052 /* TwitterAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwitterAppViewController.h; path = ../../Prototype/Prototype/TwitterAppViewController.h; sourceTree = "<group>"; };
+		E951EC2F17D1AFE400285052 /* TwitterAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TwitterAppViewController.m; path = ../../Prototype/Prototype/TwitterAppViewController.m; sourceTree = "<group>"; };
+		E951EC3017D1AFE400285052 /* TwitterAppViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TwitterAppViewController.xib; path = ../../Prototype/Prototype/TwitterAppViewController.xib; sourceTree = "<group>"; };
 		E99FA48E17CA1BCD00C98FED /* TMBBlog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBBlog.h; sourceTree = "<group>"; };
 		E99FA48F17CA1BCD00C98FED /* TMBBlog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMBBlog.m; sourceTree = "<group>"; };
 		E99FA49117CA228800C98FED /* QuestionMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QuestionMark.png; sourceTree = "<group>"; };
@@ -70,6 +78,7 @@
 				E91E923F17C839C100EA6B84 /* UIKit.framework in Frameworks */,
 				E91E924117C839C100EA6B84 /* Foundation.framework in Frameworks */,
 				E91E924317C839C100EA6B84 /* CoreGraphics.framework in Frameworks */,
+				9A95DEF5D5224F1698286DBD /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +91,7 @@
 				E91E924417C839C100EA6B84 /* TumblrManager */,
 				E91E923D17C839C100EA6B84 /* Frameworks */,
 				E91E923C17C839C100EA6B84 /* Products */,
+				C96BE817844D487BBA3C46B9 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +109,7 @@
 				E91E923E17C839C100EA6B84 /* UIKit.framework */,
 				E91E924017C839C100EA6B84 /* Foundation.framework */,
 				E91E924217C839C100EA6B84 /* CoreGraphics.framework */,
+				E16C26D1C56D47968DDF3AA4 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -120,6 +131,9 @@
 				E91E926E17C9BFDA00EA6B84 /* TMBAddAccountController.h */,
 				E91E926F17C9BFDA00EA6B84 /* TMBAddAccountController.m */,
 				E91E927017C9BFDA00EA6B84 /* TMBAddAccountController.xib */,
+				E951EC2E17D1AFE400285052 /* TwitterAppViewController.h */,
+				E951EC2F17D1AFE400285052 /* TwitterAppViewController.m */,
+				E951EC3017D1AFE400285052 /* TwitterAppViewController.xib */,
 				E91E926117C8448600EA6B84 /* TMBAccount.h */,
 				E91E926217C8448600EA6B84 /* TMBAccount.m */,
 				E99FA48E17CA1BCD00C98FED /* TMBBlog.h */,
@@ -151,9 +165,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E91E925E17C839C100EA6B84 /* Build configuration list for PBXNativeTarget "TumblrManager" */;
 			buildPhases = (
+				474C685783C34F49B4C06B44 /* Check Pods Manifest.lock */,
 				E91E923717C839C100EA6B84 /* Sources */,
 				E91E923817C839C100EA6B84 /* Frameworks */,
 				E91E923917C839C100EA6B84 /* Resources */,
+				B3F4AC900410441F9A63FF98 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -205,10 +221,44 @@
 				E91E926D17C9979700EA6B84 /* TMBBlogController.xib in Resources */,
 				E91E927217C9BFDA00EA6B84 /* TMBAddAccountController.xib in Resources */,
 				E99FA49217CA228800C98FED /* QuestionMark.png in Resources */,
+				E951EC3217D1AFE400285052 /* TwitterAppViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		474C685783C34F49B4C06B44 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B3F4AC900410441F9A63FF98 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E91E923717C839C100EA6B84 /* Sources */ = {
@@ -223,6 +273,7 @@
 				E91E926C17C9979700EA6B84 /* TMBBlogController.m in Sources */,
 				E91E927117C9BFDA00EA6B84 /* TMBAddAccountController.m in Sources */,
 				E99FA49017CA1BCE00C98FED /* TMBBlog.m in Sources */,
+				E951EC3117D1AFE400285052 /* TwitterAppViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +357,7 @@
 		};
 		E91E925F17C839C100EA6B84 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C96BE817844D487BBA3C46B9 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TumblrManager/TumblrManager-Prefix.pch";
@@ -317,6 +369,7 @@
 		};
 		E91E926017C839C100EA6B84 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C96BE817844D487BBA3C46B9 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TumblrManager/TumblrManager-Prefix.pch";
