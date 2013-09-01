@@ -6,14 +6,14 @@
 #import "RMITFoursquareRepository.h"
 #import "RMITVenue.h"
 
-@interface RMITFoursquareRepository()
+@interface TWRepository()
 @property (nonatomic, strong, readwrite) NSArray *venues;
-@property (nonatomic, strong) NSString *fourSquareClientID;
-@property (nonatomic, strong) NSString *fourSquareAppSecret;
+//@property (nonatomic, strong) NSString *fourSquareClientID;
+//@property (nonatomic, strong) NSString *fourSquareAppSecret;
 @end
 
 
-@implementation RMITFoursquareRepository
+@implementation TWRepository
 
 - (id)init
 {
@@ -24,41 +24,68 @@
 //         [NSBundle mainBundle] objectForInfoDictionaryKey: is a very good way to get the values stored in the
 //         info.plist file of an app.
 
-        self.fourSquareClientID = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"RMITFoursquareClientID"];
-        self.fourSquareAppSecret = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"RMITFoursquareSecret"];
+//        self.fourSquareClientID = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"RMITFoursquareClientID"];
+//        self.fourSquareAppSecret = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"RMITFoursquareSecret"];
     }
     return self;
 }
 
-- (void)fetchVenues
-{
-    if (self.term == nil) //You must set a term...
-    {
-        [self.delegate repository:self didFailToLoadVenuesWithTerm:nil];
-        return;
-    }
 
-    NSString *urlEncodedTerm = [self.term stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-
-    //Construct the Foursquare URL
-    NSString *urlString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?client_id=%1$@&client_secret=%2$@&near=%3$@",
-                           self.fourSquareClientID, self.fourSquareAppSecret, urlEncodedTerm];
-
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-    [NSURLConnection sendAsynchronousRequest:request
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                               if (connectionError)
-                               {
-                                   [self handleNetworkErorr:connectionError];
-                               }
-                               else
-                               {
-                                   [self handleNetworkResponse:data];
-                               }
-                           }];
+- (void) getFollowed {
+    ACAccountStore *account = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [account accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
+    [account requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error)
+     {
+         if (granted)
+         {
+             NSArray *arrayOfAccounts = [account accountsWithAccountType:accountType];
+             
+             if ([arrayOfAccounts count] > 0)
+             {
+                 ACAccount *twitterAccount = [arrayOfAccounts lastObject];
+                 
+                 NSURL *requestURL = [NSURL URLWithString:@"https://api.twitter.com/1.1/friends/ids.json"];
+                 NSMutableDictionary *twitterParameters = [[NSMutableDictionary alloc] init];
+                 
+                 [twitterParameters setObject:@"5" forKey:@"count"];
+                 [twitterParameters setObject:@"1" forKey:@"include_entities"];
+                 
+                 SLRequest *postRequest = [SLRequest
+                                           requestForServiceType:SLServiceTypeTwitter
+                                           requestMethod:SLRequestMethodGET
+                                           URL:requestURL
+                                           parameters:twitterParameters];
+                 
+                 postRequest.account = twitterAccount;
+                 
+                 [postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error)
+                  {
+                      self.dataSource = [NSJSONSerialization JSONObjectWithData:responseData
+                                                                        options:NSJSONReadingMutableLeaves
+                                                                          error:&error];
+                      
+                      if(self.dataSource)
+                      {
+                          _results = [self.dataSource valueForKey:@"ids"];
+                          NSLog(@"Results from AppDelegate: %@", _results);
+                          NSLog(@"1st Result from AppDelegate: %@", _results[0]);
+                      }
+                      
+                      if (self.dataSource.count != 0) {
+                          dispatch_async(dispatch_get_main_queue(), ^
+                                         {
+                                             //      [self.tableView reloadData];
+                                         });
+                      }
+                  }];
+             }
+             //        } else {
+             // HANDLE FAILURE TO GET ACCOUNT ACCESS
+         }
+     }];
 }
+
 
 #pragma mark - Private Failure Methods
 

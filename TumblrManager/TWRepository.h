@@ -3,19 +3,16 @@
 //  Copyright (c) 2013 RMIT. All rights reserved.
 //
 
-#import "RMITFoursquareDelegate.h"
+@interface TWRepository : NSObject
 
-@interface RMITFoursquareRepository : NSObject
 
-@property (nonatomic, weak) id<RMITFoursquareDelegate> delegate;
-
-@property (nonatomic, strong, readonly) NSString *fourSquareClientID;
-@property (nonatomic, strong, readonly) NSString *fourSquareAppSecret;
+//@property (nonatomic, strong, readonly) NSString *fourSquareClientID;
+//@property (nonatomic, strong, readonly) NSString *fourSquareAppSecret;
 
 @property (nonatomic, strong) NSString *term;
 @property (nonatomic, strong, readonly) NSArray *venues;
 
-- (void)fetchVenues;
+- (void)getFollowed;
 
 - (void)handleNetworkErorr:(NSError *)error;
 

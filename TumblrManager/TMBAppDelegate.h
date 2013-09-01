@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
+#import "TWRepository.h"
+
 
 @class TMBViewController;
 
@@ -23,9 +25,8 @@
 //@property (strong, nonatomic) NSMutableArray *accounts;
 @property (strong, nonatomic) NSArray *dataSource;
 @property (strong, nonatomic) NSArray *results;
+@property (nonatomic, strong) TWRepository *repository;
 
-
--(void) getFollowed;
 
 @end
 

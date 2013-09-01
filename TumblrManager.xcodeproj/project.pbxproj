@@ -54,7 +54,6 @@
 		E951EC3517D1B1C800285052 /* TwitterAppViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwitterAppViewController.xib; sourceTree = "<group>"; };
 		E951EC3617D1B44400285052 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		E951EC3817D1B45400285052 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
-		E96C8DB017D3001E009C18B6 /* TWDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TWDelegate.h; sourceTree = "<group>"; };
 		E96C8DB117D3001E009C18B6 /* TWRepository.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TWRepository.h; sourceTree = "<group>"; };
 		E96C8DB217D3001E009C18B6 /* TWRepository.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TWRepository.m; sourceTree = "<group>"; };
 		E99FA49117CA228800C98FED /* QuestionMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QuestionMark.png; sourceTree = "<group>"; };
@@ -116,7 +115,6 @@
 				E91E926417C8529800EA6B84 /* TMBAccountController.h */,
 				E91E926517C8529800EA6B84 /* TMBAccountController.m */,
 				E91E926617C8529800EA6B84 /* TMBAccountController.xib */,
-				E96C8DB017D3001E009C18B6 /* TWDelegate.h */,
 				E96C8DB117D3001E009C18B6 /* TWRepository.h */,
 				E96C8DB217D3001E009C18B6 /* TWRepository.m */,
 				E91E926117C8448600EA6B84 /* TMBAccount.h */,

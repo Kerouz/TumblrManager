@@ -29,17 +29,23 @@
     return self;
 }
 
+- (void)configureWithRepository:(TWRepository *)repository
+{
+    self.repository = repository;
+//    self.repository.delegate = self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     //self.title = @"Followed Accounts";
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     delegate = (TMBAppDelegate *)[[UIApplication sharedApplication]delegate];
-    [delegate getFollowed];
+    
 
     
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(refreshEvents) forControlEvents:UIControlEventValueChanged];
+ //   self.refreshControl = [[UIRefreshControl alloc] init];
+//    [self.refreshControl addTarget:self action:@selector(refreshEvents) forControlEvents:UIControlEventValueChanged];
     
     //    This is returning NULL
     NSLog (@"Did get from Delegate? %@", results);
@@ -47,11 +53,27 @@
 }
 
 
+
+
+-(void)refreshView:(UIRefreshControl *)refresh {
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
+    
+        // custom refresh logic would be placed here...
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MMM d, h:mm a"];
+    NSString *lastUpdated = [NSString stringWithFormat:@"Last updated on %@", [formatter stringFromDate:[NSDate date]]];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
+    [refresh endRefreshing];
+    
+}
+
+
 #pragma mark - Actions
 
-- (void)refreshEvents
+- (void)refreshFollowed
 {
-    [self.repository fetchVenues];
+    [self.repository getFollowed];
 }
 
 - (void)didReceiveMemoryWarning
