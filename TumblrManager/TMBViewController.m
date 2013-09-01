@@ -10,7 +10,7 @@
 #import "TMBAccountController.h"
 #import "TMBAppDelegate.h"
 #import "TMBAccount.h"
-#import "TMBAddAccountController.h"
+#import "TwitterAppViewController.h"
 
 @interface TMBViewController ()
 
@@ -21,11 +21,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Tumblr Accounts";
+    self.title = @"Followed Accounts";
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    TMBAppDelegate *delegate = (TMBAppDelegate *)[[UIApplication sharedApplication]delegate];
-    accounts = delegate.accounts;
-    // NSLog(@"Number of accounts, %lu", (unsigned long)[accounts count]);
+    delegate = (TMBAppDelegate *)[[UIApplication sharedApplication]delegate];
+//    [self getFollowed];
+//    account = delegate.account;
+    results = delegate.dataSource;
+    NSLog(@"View Controller Accounts: %@", results);
+
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,70 +41,26 @@
 #pragma mark -
 #pragma mark UITableViewDataSource Methods
 
-
-- (UITableViewCell *) tableView: (UITableView *)tv cellForRowAtIndexPath: (NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:@"cell"];
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    if (nil == cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    if (cell == nil ) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    if (indexPath.row < accounts.count) {
-    TMBAccount *thisAccount = [accounts objectAtIndex:indexPath.row];
-    cell.textLabel.text = thisAccount.accountName;
-    } else {
-        cell.textLabel.text = @"Add a tumblr account";
-        cell.textLabel.textColor = [UIColor lightGrayColor];
-        cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
-    // Checks for the current account and whether there is a blog followed
-//    NSLog(@"%@", thisAccount.accountName);
-//    NSLog(@"second blog followed: %@", [thisAccount.accountBlogs objectAtIndex:1] );
+    // This line returns the ID of the current user's friends
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", results [[indexPath row]]];
+    
     return cell;
 }
 
-- (NSInteger) tableView: (UITableView *)tv numberOfRowsInSection:(NSInteger)section {
-    NSInteger count = accounts.count;
-    if (self.editing) {
-        count = count +1;
-    }
-    return count;
-}
 
 
-- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
-    if (editing != self.editing) {
-        [super setEditing:editing animated:animated];
-        [self.tableView setEditing:editing animated:animated];
-        
-        NSMutableArray *indices = [[NSMutableArray alloc] init];
-        for (int i=0; i < accounts.count; i++) {
-            [indices addObject: [ NSIndexPath indexPathForRow:i inSection:0]];
-        }
-        NSArray *lastIndex = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:accounts.count inSection:0]];
-        
-        if (editing == YES) {
-            for (int i=0; i < accounts.count; i++) {
-                UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[indices objectAtIndex:i]];
-                [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-            }
-            [self.tableView insertRowsAtIndexPaths:lastIndex withRowAnimation:UITableViewRowAnimationLeft];
-        }else {
-            for (int i=0; i < accounts.count; i++) {
-                UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[indices objectAtIndex:i]];
-                [cell setSelectionStyle:UITableViewCellSelectionStyleBlue];
-            }
-            [self.tableView deleteRowsAtIndexPaths:lastIndex withRowAnimation:UITableViewRowAnimationLeft];
-        }
-    }
-}
-
-
-- (void)tableView:(UITableView *)tv commitEditingStyle:(UITableViewCellEditingStyle) editing forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editing == UITableViewCellEditingStyleDelete) {
-        [accounts removeObjectAtIndex:indexPath.row];
-        [tv deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-    }
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection: (NSInteger)section
+{
+    return results.count;
 }
 
 
@@ -108,25 +68,76 @@
 #pragma mark UITableDelegate Methods
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    TMBAppDelegate *delegate = (TMBAppDelegate *) [[UIApplication sharedApplication] delegate];
+ //   TMBAppDelegate *delegate = (TMBAppDelegate *) [[UIApplication sharedApplication] delegate];
     
-    if (indexPath.row < accounts.count && !self.editing) {
-        TMBAccountController *accountList = [[TMBAccountController alloc] initWithIndexPath:indexPath];
+    if (indexPath.row < results.count && !self.editing) {
+//        TMBAccountController *accountList = [[TMBAccountController alloc] initWithIndexPath:indexPath];
+        TwitterAppViewController *accountList = [[TwitterAppViewController alloc] init];
+
         [delegate.navController pushViewController:accountList animated:YES];
     }
-    if (indexPath.row == accounts.count && self.editing) {
-        TMBAddAccountController *addAccount = [[TMBAddAccountController alloc] init];        
-        [delegate.navController pushViewController:addAccount animated:YES];
-    }
+
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tv editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row < accounts.count) {
-        return UITableViewCellEditingStyleDelete;
-    } else {
-        return UITableViewCellEditingStyleInsert;
-    }
-}
+
+
+//- (void) getFollowed {
+//    ACAccountStore *account = [[ACAccountStore alloc] init];
+//    ACAccountType *accountType = [account accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+//    
+//    [account requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error)
+//     {
+//         if (granted)
+//         {
+//             NSArray *arrayOfAccounts = [account accountsWithAccountType:accountType];
+//             
+//             if ([arrayOfAccounts count] > 0)
+//             {
+//                 ACAccount *twitterAccount = [arrayOfAccounts lastObject];
+//                 
+//                 NSURL *requestURL = [NSURL URLWithString:@"https://api.twitter.com/1.1/friends/ids.json"];
+//                 NSMutableDictionary *twitterParameters = [[NSMutableDictionary alloc] init];
+//                 
+//                 [twitterParameters setObject:@"5" forKey:@"count"];
+//                 [twitterParameters setObject:@"1" forKey:@"include_entities"];
+//                 
+//                 SLRequest *postRequest = [SLRequest
+//                                           requestForServiceType:SLServiceTypeTwitter
+//                                           requestMethod:SLRequestMethodGET
+//                                           URL:requestURL
+//                                           parameters:twitterParameters];
+//                 
+//                 postRequest.account = twitterAccount;
+//                 
+//                 [postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error)
+//                  {
+//                      self.dataSource = [NSJSONSerialization JSONObjectWithData:responseData
+//                                                                        options:NSJSONReadingMutableLeaves
+//                                                                          error:&error];
+//                      
+//                      if(self.dataSource){
+//                          results = [self.dataSource valueForKey:@"ids"];
+//                          //                        NSLog(@"Results: %@", results);
+//                          //                    theString = results[0];
+//                          //                        NSLog(@"theString Value = %@", theString);
+//                          
+//                      }
+//                      
+//                      if (self.dataSource.count != 0) {
+//                          dispatch_async(dispatch_get_main_queue(), ^{[self.tableView reloadData];
+//                              
+//                          });
+//                      }
+//                  }];
+//             }
+//             //        } else {
+//             // HANDLE FAILURE TO GET ACCOUNT ACCESS
+//         }
+//     }];
+//}
+
+
+
 
 @end

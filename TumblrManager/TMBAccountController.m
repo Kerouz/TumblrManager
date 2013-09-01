@@ -39,7 +39,7 @@
     [super viewDidLoad];
     TMBAppDelegate *delegate = (TMBAppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    currentAccount = [delegate.accounts objectAtIndex:index.row ];
+    currentAccount = [delegate.results objectAtIndex:index.row ];
     self.title = currentAccount.accountName;
     
         
@@ -64,14 +64,16 @@
     if (nil == cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    TMBBlog *listFollowedBlog = [currentAccount.accountBlogs objectAtIndex:indexPath.row];
-    cell.textLabel.text = listFollowedBlog.blogTitle;
+//    TMBBlog *listFollowedBlog = [currentAccount.accountBlogs objectAtIndex:indexPath.row];
+    NSString *tempString = @"TEMP";
+    cell.textLabel.text = tempString;
     return cell;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [currentAccount.accountBlogs count];
+    int tempInt = 3;
+    return tempInt;
 }
 
 #pragma mark -

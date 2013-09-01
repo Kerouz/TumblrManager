@@ -13,11 +13,11 @@
     
 }
 
+@property (nonatomic, strong) NSString *accountID;
 @property (nonatomic, strong) NSString *accountName;
 @property (nonatomic, strong) UIImage *accountImage;
-@property (nonatomic, strong) NSMutableArray *accountBlogs;
 
--(id) initWithAccounts;
--(id) initWithDetails: (NSString *)passedAccountName;
+-(id) initWithDetails: (NSString *)passedAccountID;
+-(NSString *) displayUserName;
 
 @end

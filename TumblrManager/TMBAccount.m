@@ -11,30 +11,22 @@
 
 @implementation TMBAccount
 
-- (id) initWithAccounts
-{
-        if ((self = [super init])) {
-            _accountBlogs = [NSArray arrayWithObjects: @"Red", @"Green", @"Blue", @"Yellow", nil];
-        }
-        return self;
-}
 
--(id) initWithDetails: (NSString *)passedAccountName
+-(id) initWithDetails: (NSString *)passedAccountID
 {
     if ((self = [super init])) {
-        _accountName = passedAccountName;
-        _accountBlogs = [NSMutableArray arrayWithObjects: nil];
+        _accountID = passedAccountID;
         
 //        int randomTestNumber = (arc4random() % 5) + 1;
-        int randomTestNumber = 3;
-        
-        for (int i=0; i< randomTestNumber; i++) {
-            TMBBlog *tempBlog = [[TMBBlog alloc] initWithDetails];
-            [_accountBlogs addObject:tempBlog];
-        }
+
     }
     return self;
 }
 
+
+- (NSString *) displayUserName {
+    _accountName = @"Getting There";
+    return _accountName;
+}
 
 @end

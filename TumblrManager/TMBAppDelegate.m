@@ -18,29 +18,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // Remember: Need to set up the inital accounts array
-    self.accounts = [[NSMutableArray alloc] initWithObjects: nil];
-    
-//    TMBAccount *account1 = [[TMBAccount alloc] init];
-//    account1.accountName = @"Followed 1";
-//    [account1.accountBlogs addObject:@"Blog 1"];
-//    [account1.accountBlogs addObject:@"Blog 2"];
-//
-//    TMBAccount *account2 = [[TMBAccount alloc] init];
-//    account2.accountName = @"Followed 2";
-//    [account2.accountBlogs addObject:@"Blog A"];
-//    [account2.accountBlogs addObject:@"Blog B"];
-//    [account2.accountBlogs addObject:@"Blog C"];
-    
-    
-    TMBAccount *account1 = [[TMBAccount alloc] initWithDetails:@"Followed 1"];
-    TMBAccount *account2 = [[TMBAccount alloc] initWithDetails:@"Followed 2"];
-    TMBAccount *account3 = [[TMBAccount alloc] initWithDetails:@"Followed 3"];
-    TMBAccount *account4 = [[TMBAccount alloc] initWithDetails:@"Followed 4"];
-    
-    [self.accounts addObject:account1];
-    [self.accounts addObject:account2];
-    [self.accounts addObject:account3];
-    [self.accounts addObject:account4];
+//    self.accounts = [[NSMutableArray alloc] initWithObjects: nil];
+    [self getFollowed];
     
     self.viewController = [[TMBViewController alloc] initWithNibName:@"TMBViewController" bundle:nil];
     self.navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
@@ -48,6 +27,66 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+- (void) getFollowed {
+    ACAccountStore *account = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [account accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
+    [account requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error)
+     {
+         if (granted)
+         {
+             NSArray *arrayOfAccounts = [account accountsWithAccountType:accountType];
+             
+             if ([arrayOfAccounts count] > 0)
+             {
+                 ACAccount *twitterAccount = [arrayOfAccounts lastObject];
+                 
+                 NSURL *requestURL = [NSURL URLWithString:@"https://api.twitter.com/1.1/friends/ids.json"];
+                 NSMutableDictionary *twitterParameters = [[NSMutableDictionary alloc] init];
+                 
+                 [twitterParameters setObject:@"5" forKey:@"count"];
+                 [twitterParameters setObject:@"1" forKey:@"include_entities"];
+                 
+                 SLRequest *postRequest = [SLRequest
+                                           requestForServiceType:SLServiceTypeTwitter
+                                           requestMethod:SLRequestMethodGET
+                                           URL:requestURL
+                                           parameters:twitterParameters];
+                 
+                 postRequest.account = twitterAccount;
+                 
+                 [postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error)
+                  {
+                      self.dataSource = [NSJSONSerialization JSONObjectWithData:responseData
+                                                                        options:NSJSONReadingMutableLeaves
+                                                                          error:&error];
+                      
+                      if(self.dataSource){
+                          _results = [self.dataSource valueForKey:@"ids"];
+                        NSLog(@"Results: %@", _results);
+                          //                    theString = results[0];
+                          //                        NSLog(@"theString Value = %@", theString);
+                          
+                      }
+                      
+                      if (self.dataSource.count != 0) {
+                          dispatch_async(dispatch_get_main_queue(), ^
+                          {
+                        //      [self.tableView reloadData];
+                          });
+                      }
+                  }];
+             }
+             //        } else {
+             // HANDLE FAILURE TO GET ACCOUNT ACCESS
+                }
+            }];
+         }
+
+     
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

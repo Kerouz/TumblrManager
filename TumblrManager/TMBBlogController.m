@@ -37,21 +37,21 @@
     [super viewDidLoad];
     
     TMBAppDelegate *delegate = (TMBAppDelegate *)[[UIApplication sharedApplication] delegate];
-    TMBAccount *currentAccount = [delegate.accounts objectAtIndex:index.row];
+    TMBAccount *currentAccount = [delegate.results objectAtIndex:index.row];
         
-    currentBlog = [currentAccount.accountBlogs objectAtIndex:index.row];
-    
-    self.title = currentBlog.blogTitle;
-
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"YYYY-MM-dd";
-    _blogOwnerName.text = currentBlog.blogTitle;
-    _blogOwnerName.editable = NO;
-    NSLog(@"%@", currentBlog.blogUpdated);
-    _blogUpdateLabel.text = [dateFormatter stringFromDate:currentBlog.blogUpdated];
-    _blogAvatarImage.image = currentBlog.blogAvatar;
-    _blogDescriptionText.text = currentBlog.blogDescription;
-    _blogDescriptionText.editable = NO;
+//    currentBlog = [currentAccount.accountImage objectAtIndex:index.row];
+//    
+//    self.title = currentBlog.blogTitle;
+//
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    dateFormatter.dateFormat = @"YYYY-MM-dd";
+//    _blogOwnerName.text = currentBlog.blogTitle;
+//    _blogOwnerName.editable = NO;
+//    NSLog(@"%@", currentBlog.blogUpdated);
+//    _blogUpdateLabel.text = [dateFormatter stringFromDate:currentBlog.blogUpdated];
+//    _blogAvatarImage.image = currentBlog.blogAvatar;
+//    _blogDescriptionText.text = currentBlog.blogDescription;
+//    _blogDescriptionText.editable = NO;
     
 
 }
