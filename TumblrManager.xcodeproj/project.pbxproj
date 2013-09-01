@@ -21,12 +21,9 @@
 		E91E926317C8448600EA6B84 /* TMBAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = E91E926217C8448600EA6B84 /* TMBAccount.m */; };
 		E91E926717C8529800EA6B84 /* TMBAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = E91E926517C8529800EA6B84 /* TMBAccountController.m */; };
 		E91E926817C8529800EA6B84 /* TMBAccountController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E91E926617C8529800EA6B84 /* TMBAccountController.xib */; };
-		E91E926C17C9979700EA6B84 /* TMBBlogController.m in Sources */ = {isa = PBXBuildFile; fileRef = E91E926A17C9979700EA6B84 /* TMBBlogController.m */; };
-		E91E926D17C9979700EA6B84 /* TMBBlogController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E91E926B17C9979700EA6B84 /* TMBBlogController.xib */; };
 		E951EC3717D1B44400285052 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E951EC3617D1B44400285052 /* Social.framework */; };
 		E951EC3917D1B45400285052 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E951EC3817D1B45400285052 /* Accounts.framework */; };
 		E951EC3A17D1B52600285052 /* TwitterAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E951EC3417D1B1C800285052 /* TwitterAppViewController.m */; };
-		E99FA49017CA1BCE00C98FED /* TMBBlog.m in Sources */ = {isa = PBXBuildFile; fileRef = E99FA48F17CA1BCD00C98FED /* TMBBlog.m */; };
 		E99FA49217CA228800C98FED /* QuestionMark.png in Resources */ = {isa = PBXBuildFile; fileRef = E99FA49117CA228800C98FED /* QuestionMark.png */; };
 /* End PBXBuildFile section */
 
@@ -52,16 +49,14 @@
 		E91E926417C8529800EA6B84 /* TMBAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBAccountController.h; sourceTree = "<group>"; };
 		E91E926517C8529800EA6B84 /* TMBAccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMBAccountController.m; sourceTree = "<group>"; };
 		E91E926617C8529800EA6B84 /* TMBAccountController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMBAccountController.xib; sourceTree = "<group>"; };
-		E91E926917C9979700EA6B84 /* TMBBlogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBBlogController.h; sourceTree = "<group>"; };
-		E91E926A17C9979700EA6B84 /* TMBBlogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMBBlogController.m; sourceTree = "<group>"; };
-		E91E926B17C9979700EA6B84 /* TMBBlogController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMBBlogController.xib; sourceTree = "<group>"; };
 		E951EC3317D1B1C800285052 /* TwitterAppViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TwitterAppViewController.h; sourceTree = "<group>"; };
 		E951EC3417D1B1C800285052 /* TwitterAppViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwitterAppViewController.m; sourceTree = "<group>"; };
 		E951EC3517D1B1C800285052 /* TwitterAppViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwitterAppViewController.xib; sourceTree = "<group>"; };
 		E951EC3617D1B44400285052 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		E951EC3817D1B45400285052 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
-		E99FA48E17CA1BCD00C98FED /* TMBBlog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBBlog.h; sourceTree = "<group>"; };
-		E99FA48F17CA1BCD00C98FED /* TMBBlog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMBBlog.m; sourceTree = "<group>"; };
+		E96C8DB017D3001E009C18B6 /* TWDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TWDelegate.h; sourceTree = "<group>"; };
+		E96C8DB117D3001E009C18B6 /* TWRepository.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TWRepository.h; sourceTree = "<group>"; };
+		E96C8DB217D3001E009C18B6 /* TWRepository.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TWRepository.m; sourceTree = "<group>"; };
 		E99FA49117CA228800C98FED /* QuestionMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QuestionMark.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,13 +116,11 @@
 				E91E926417C8529800EA6B84 /* TMBAccountController.h */,
 				E91E926517C8529800EA6B84 /* TMBAccountController.m */,
 				E91E926617C8529800EA6B84 /* TMBAccountController.xib */,
-				E91E926917C9979700EA6B84 /* TMBBlogController.h */,
-				E91E926A17C9979700EA6B84 /* TMBBlogController.m */,
-				E91E926B17C9979700EA6B84 /* TMBBlogController.xib */,
+				E96C8DB017D3001E009C18B6 /* TWDelegate.h */,
+				E96C8DB117D3001E009C18B6 /* TWRepository.h */,
+				E96C8DB217D3001E009C18B6 /* TWRepository.m */,
 				E91E926117C8448600EA6B84 /* TMBAccount.h */,
 				E91E926217C8448600EA6B84 /* TMBAccount.m */,
-				E99FA48E17CA1BCD00C98FED /* TMBBlog.h */,
-				E99FA48F17CA1BCD00C98FED /* TMBBlog.m */,
 				E951EC3317D1B1C800285052 /* TwitterAppViewController.h */,
 				E951EC3417D1B1C800285052 /* TwitterAppViewController.m */,
 				E951EC3517D1B1C800285052 /* TwitterAppViewController.xib */,
@@ -209,7 +202,6 @@
 				E91E925517C839C100EA6B84 /* Default-568h@2x.png in Resources */,
 				E91E925B17C839C100EA6B84 /* TMBViewController.xib in Resources */,
 				E91E926817C8529800EA6B84 /* TMBAccountController.xib in Resources */,
-				E91E926D17C9979700EA6B84 /* TMBBlogController.xib in Resources */,
 				E99FA49217CA228800C98FED /* QuestionMark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,8 +219,6 @@
 				E91E925817C839C100EA6B84 /* TMBViewController.m in Sources */,
 				E91E926317C8448600EA6B84 /* TMBAccount.m in Sources */,
 				E91E926717C8529800EA6B84 /* TMBAccountController.m in Sources */,
-				E91E926C17C9979700EA6B84 /* TMBBlogController.m in Sources */,
-				E99FA49017CA1BCE00C98FED /* TMBBlog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,18 +18,40 @@
 
 @implementation TMBViewController
 
+
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.title= @"Test Accounts";
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Followed Accounts";
+    //self.title = @"Followed Accounts";
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     delegate = (TMBAppDelegate *)[[UIApplication sharedApplication]delegate];
-//    [self getFollowed];
-//    account = delegate.account;
-    results = delegate.dataSource;
-    NSLog(@"View Controller Accounts: %@", results);
+    [delegate getFollowed];
+
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refreshEvents) forControlEvents:UIControlEventValueChanged];
+    
+    //    This is returning NULL
+    NSLog (@"Did get from Delegate? %@", results);
+
+}
 
 
+#pragma mark - Actions
+
+- (void)refreshEvents
+{
+    [self.repository fetchVenues];
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,8 +73,9 @@
     }
     
     // This line returns the ID of the current user's friends
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", results [[indexPath row]]];
+//    cell.textLabel.text = [NSString stringWithFormat:@"%@", results [[indexPath row]]];
     
+    cell.textLabel.text = @"TEMP";
     return cell;
 }
 
@@ -60,7 +83,13 @@
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection: (NSInteger)section
 {
-    return results.count;
+    results = delegate.results;
+
+//    return results.count;
+    int count = (int)5;
+    NSLog(@"results.count: %d", results.count);
+    return count;
+
 }
 
 

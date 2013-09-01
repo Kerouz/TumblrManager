@@ -7,7 +7,6 @@
 //
 
 #import "TMBAccount.h"
-#import "TMBBlog.h"
 
 @implementation TMBAccount
 

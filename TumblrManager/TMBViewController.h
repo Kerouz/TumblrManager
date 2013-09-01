@@ -11,9 +11,8 @@
 
 
 @interface TMBViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
-    //    NSString *theString;
-    NSMutableArray *account;
-    NSMutableArray *results;
+//    NSMutableArray *account;
+    NSArray *results;
     TMBAppDelegate *delegate;
     
 }

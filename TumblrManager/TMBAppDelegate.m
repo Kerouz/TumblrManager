@@ -19,7 +19,7 @@
     
     // Remember: Need to set up the inital accounts array
 //    self.accounts = [[NSMutableArray alloc] initWithObjects: nil];
-    [self getFollowed];
+//    [self getFollowed];
     
     self.viewController = [[TMBViewController alloc] initWithNibName:@"TMBViewController" bundle:nil];
     self.navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
@@ -62,12 +62,11 @@
                                                                         options:NSJSONReadingMutableLeaves
                                                                           error:&error];
                       
-                      if(self.dataSource){
+                      if(self.dataSource)
+                      {
                           _results = [self.dataSource valueForKey:@"ids"];
-                        NSLog(@"Results: %@", _results);
-                          //                    theString = results[0];
-                          //                        NSLog(@"theString Value = %@", theString);
-                          
+                        NSLog(@"Results from AppDelegate: %@", _results);
+                        NSLog(@"1st Result from AppDelegate: %@", _results[0]);
                       }
                       
                       if (self.dataSource.count != 0) {
